@@ -9,6 +9,7 @@ import express from "express";
 import task from "./routers/tasks.js";
 import connectToDatabase from "./db/connect.js";
 import { config } from "dotenv";
+import notFound from "./middleware/not-found.js";
 const app = express();
 const port = 3000;
 
@@ -16,9 +17,11 @@ const port = 3000;
 config();
 
 // Middlewares
+
 app.use(express.static("./public")); //frontend
 app.use(express.json()); //data transfer to custom Middleware and default
 app.use("/api/v1/tasks", task); //custom Middleware
+app.use (notFound)
 
 // Start the server
 const startServer = async () => {

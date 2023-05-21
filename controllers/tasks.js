@@ -5,6 +5,7 @@ export const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find({});
     res.status(200).json({ tasks });
+    // res.status(200).json({ tasks , amount :tasks.length});
   } catch (error) {
     res.status(500).json({ msg: error });
   }

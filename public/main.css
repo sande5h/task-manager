@@ -444,3 +444,10 @@ form > :last-child {
   text-align: center;
   margin-top: 1rem;
 }
+
+
+
+.not-found {
+
+  font-size: large;
+}
