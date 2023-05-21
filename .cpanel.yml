@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/himalay6/public_html
+    - /bin/cp -R /home/himalay6/repositories/task-manager/* $DEPLOYPATH
+    - cd $DEPLOYPATH
+    - /usr/local/bin/npm install --production
+    - /usr/local/bin/npm run build
