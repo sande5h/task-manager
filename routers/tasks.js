@@ -1,8 +1,19 @@
+/*
+
+Routers for backend
+
+*/
+
+
 import { Router } from "express";
 const router = Router();
-import { getAllTasks, createTask, getTask, updateTask, deleteTask } from "../controllers/tasks.js";
-
-
+import {
+  getAllTasks,
+  createTask,
+  getTask,
+  updateTask,
+  deleteTask,
+} from "../controllers/tasks.js";
 
 router.route("/").get(getAllTasks);
 router.route("/").post(createTask);

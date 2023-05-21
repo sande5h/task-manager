@@ -1,25 +1,24 @@
-import express from 'express';
-import task from './routers/tasks.js';
-import connectToDatabase from './db/connect.js';
-import { config } from 'dotenv';
+/*
+  Name : Task Manager,
+  version : 0.3.5,
+  author : Sandesh Bhusal,
+  purpose : Educational
+
+*/
+import express from "express";
+import task from "./routers/tasks.js";
+import connectToDatabase from "./db/connect.js";
+import { config } from "dotenv";
 const app = express();
 const port = 3000;
-
 
 //env config
 config();
 
-
-
-
-// Middleware for data transfer
-app.use(express.json());
-//custom Middleware
-app.use("/api/v1/tasks", task);
-// Routes
-app.get('/hello', (req, res) => {
-  res.send('Task Manager App');
-});
+// Middlewares
+app.use(express.static("./public")); //frontend
+app.use(express.json()); //data transfer to custom Middleware and default
+app.use("/api/v1/tasks", task); //custom Middleware
 
 // Start the server
 const startServer = async () => {
@@ -30,7 +29,7 @@ const startServer = async () => {
     });
   } catch (error) {
     console.log(error);
-    process.exit(1); // Exit the process with a failure code
+    process.exit(1);
   }
 };
 
